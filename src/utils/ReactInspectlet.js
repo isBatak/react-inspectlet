@@ -1,6 +1,6 @@
 const logId = '[react-inspeclet]';
 
-const ReactInspeclet = {
+const ReactInspectlet = {
   initialize: (wid, options) => {
     if (!wid) {
       console.warn(logId, 'wid is required');
@@ -32,7 +32,7 @@ const ReactInspeclet = {
       document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
     })();
     /* eslint-enable */
-  }
+  },
 };
 
-export default ReactInspeclet;
+export default ReactInspectlet;
