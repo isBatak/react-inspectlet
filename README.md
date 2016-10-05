@@ -7,7 +7,7 @@
 
 Install the package locally by running `npm install react-inspectlet`.
 
-Use `require('react-inspectlet')` to use React Inspectlet module in your project.
+Use `require('react-inspectlet')` to use the React Inspectlet module in your project.
 
 ### Contributing
 
