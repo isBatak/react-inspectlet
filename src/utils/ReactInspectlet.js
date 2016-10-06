@@ -33,6 +33,18 @@ const ReactInspectlet = {
     })();
     /* eslint-enable */
   },
+
+  /**
+   * This function is only needed for legacy deployments!
+   * Changes to the URL via History.pushState() are now automatically picked up
+   * by Inspectlet so the below is unnecessary.
+   * @return void
+   */
+  virtualPage: () => {
+    /* eslint-disable */
+    __insp.push(['virtualPage']);
+    /* eslint-enable */
+  },
 };
 
 export default ReactInspectlet;
