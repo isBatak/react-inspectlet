@@ -10,10 +10,10 @@ const ReactInspectlet = {
     /* eslint-disable */
     window.__insp = window.__insp || [];
 
-    __insp.push(['wid', wid]);
+    window.__insp.push(['wid', wid]);
 
     if (options && options.debug) {
-      __insp.push(['debug', true]);
+      window.__insp.push(['debug', true]);
     }
 
     (function() {
@@ -25,8 +25,8 @@ const ReactInspectlet = {
         insp.async = true;
         insp.id = "inspsync";
         insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js';
-        var x = document.getElementsByTagName('script')[0];
-        x.parentNode.insertBefore(insp, x);
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(insp);
       };
       setTimeout(ldinsp, 500);
       document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
@@ -41,9 +41,7 @@ const ReactInspectlet = {
    * @return void
    */
   virtualPage: () => {
-    /* eslint-disable */
-    __insp.push(['virtualPage']);
-    /* eslint-enable */
+    window.__insp.push(['virtualPage']);
   },
 };
 
