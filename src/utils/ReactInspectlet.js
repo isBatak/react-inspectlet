@@ -3,7 +3,7 @@ const logId = '[react-inspeclet]';
 const ReactInspectlet = {
   initialize: (wid, options) => {
     if (!wid) {
-      console.warn(logId, 'wid is required');
+      console.warn(logId, 'wid is required'); // eslint-disable-line no-console
       return;
     }
 
@@ -41,7 +41,7 @@ const ReactInspectlet = {
    * @return void
    */
   virtualPage: () => {
-    window.__insp.push(['virtualPage']);
+    window.__insp.push(['virtualPage']); // eslint-disable-line no-underscore-dangle, no-undef
   },
 };
 
