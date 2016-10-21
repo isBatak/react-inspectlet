@@ -1,23 +1,36 @@
+const webpack = require('webpack');
+const path = require('path');
+
+const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+
+const libraryName = 'library';
+const outputFile = `${libraryName}.js`;
+
 module.exports = {
   context: __dirname,
-  entry: "./src/",
+  entry: './src/',
+  devtool: 'source-map',
   output: {
-      path: __dirname + "/dist",
-      filename: "bundle.js"
+    path: path.join(__dirname, '/lib'),
+    filename: outputFile,
+    library: libraryName,
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
   },
   module: {
     loaders: [
-        // allow use of ES6 features and JSX syntax
-        {
-          test: /\.(js|es6|jsx)$/,
-          // Enable caching for improved performance during development
-          loaders: ['babel?cacheDirectory'],
-          // Only include the src folder to speed up the process
-          include: __dirname + "src"
-        }
-    ]
+      {
+        test: /\.(js|jsx)$/,
+        loaders: ['babel?cacheDirectory', 'eslint-loader'],
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.es6']
-  }
+    root: path.resolve('./src'),
+    extensions: ['', '.js', '.jsx'],
+  },
+  plugins: [
+    new UglifyJsPlugin(),
+  ],
 };
